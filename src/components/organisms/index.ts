@@ -1,0 +1,10 @@
+export { Header } from './Header';
+export { Footer } from './Footer';
+export { Hero } from './Hero';
+export { OffersSection } from './OffersSection';
+export { DishesSection } from './DishesSection';
+export { StorySection } from './StorySection';
+export { GallerySection } from './GallerySection';
+export { ReviewsSection } from './ReviewsSection';
+export { VisitUs } from './VisitUs';
+export { MenuSections } from './MenuSections';

@@ -1,0 +1,203 @@
+{
+  "site": {
+    "name": "Krispy",
+    "tagline": "Crispy, juicy and made fresh — ready for takeaway.",
+    "phone": { "display": "+94 76 090 0519", "href": "tel:+94760900519" },
+    "email": "hello@krispy.lk",
+    "address": {
+      "short": "152 Thalgasmote, Veyangoda",
+      "full": "152 Thalgasmote, Veyangoda, Sri Lanka"
+    },
+    "hours": [
+      { "days": "Mon–Fri", "time": "6pm – 11pm" },
+      { "days": "Sat–Sun", "time": "6pm – 11pm" }
+    ],
+    "footerInfo": ["Open daily · 6pm – 11pm", "Privacy policy", "Terms & conditions", "Allergen information"],
+    "social": [
+      { "id": "instagram", "label": "Instagram", "href": "https://instagram.com" },
+      { "id": "facebook", "label": "Facebook", "href": "https://facebook.com" }
+    ]
+  },
+
+  "nav": {
+    "links": [
+      { "href": "/", "label": "Home" },
+      { "href": "/menu", "label": "Menu" },
+      { "href": "/about", "label": "About Krispy" },
+      { "href": "/contact", "label": "Visit us" }
+    ],
+    "cta": { "href": "/menu", "label": "Order now" }
+  },
+
+  "pages": {
+    "home": {
+      "title": "Krispy — Crispy Chicken Takeaway",
+      "description": "Krispy: hand-breaded crispy chicken, burgers and loaded fries. Fast takeaway, cosy dine-in.",
+      "ogTitle": "Krispy — Crispy Chicken Takeaway",
+      "ogDescription": "Hand-breaded crispy chicken, burgers and fries made fresh for takeaway."
+    },
+    "menu": {
+      "title": "Menu - Krispy",
+      "description": "Crispy chicken, burgers, sides and drinks — order Krispy takeaway.",
+      "ogTitle": "Menu — Krispy",
+      "ogDescription": "Crispy chicken, burgers, sides and drinks for takeaway."
+    },
+    "about": {
+      "title": "About - Krispy",
+      "description": "The story behind Krispy, Colombo's favourite crispy takeaway.",
+      "ogTitle": "About - Krispy",
+      "ogDescription": "The story behind Krispy's crispy takeaway kitchen."
+    },
+    "contact": {
+      "title": "Visit Us -  Krispy",
+      "description": "Krispy address, opening hours, map, phone and directions for takeaway.",
+      "ogTitle": "Visit Us — Krispy",
+      "ogDescription": "Find Krispy: address, hours, map and directions."
+    }
+  },
+
+  "images": {
+    "hero": { "src": "/images/hero.jpg", "alt": "Krispy food", "width": 1920, "height": 1088 },
+    "interior": {
+      "src": "/images/interior.jpg",
+      "alt": "Krispy restaurant interior",
+      "width": 1280,
+      "height": 960
+    },
+    "chef": { "src": "/images/chef.jpg", "alt": "Krispy kitchen", "width": 1280, "height": 960 },
+    "chicken": { "src": "/images/dish-chicken.jpg", "alt": "Krispy Bucket", "width": 1024, "height": 1024 },
+    "burger": { "src": "/images/dish-burger.jpg", "alt": "Classic Burger", "width": 1024, "height": 1024 },
+    "fries": { "src": "/images/dish-fries.jpg", "alt": "Loaded Fries", "width": 1024, "height": 1024 }
+  },
+
+  "home": {
+    "hero": {
+      "image": "hero",
+      "eyebrow": "Takeaway · Dine-in",
+      "titleStart": "Seriously",
+      "titleHighlight": "crispy",
+      "subtitle": "Hand-breaded, fried fresh and packed hot — ready when you are.",
+      "primaryCtaLabel": "Order takeaway",
+      "secondaryCta": { "label": "View menu", "href": "/menu" }
+    },
+    "offers": {
+      "eyebrow": "Deals",
+      "title": "Today's offers",
+      "items": [
+        { "title": "Family Feast", "text": "Bucket + 2 fries + 4 drinks", "tag": "Save 20%" },
+        { "title": "Tuesday Wings", "text": "Buy 6 wings, get 6 free", "tag": "BOGO" },
+        { "title": "Lunch Combo", "text": "Burger, fries & drink 11am–3pm", "tag": "Rs 1,690" }
+      ]
+    },
+    "dishes": {
+      "eyebrow": "Fan favourites",
+      "title": "Signature dishes",
+      "items": [
+        {
+          "image": "chicken",
+          "name": "Krispy Bucket",
+          "desc": "8 pieces of our signature crunch",
+          "price": "3,900"
+        },
+        {
+          "image": "burger",
+          "name": "Classic Burger",
+          "desc": "Crispy fillet, cheese, house sauce",
+          "price": "1,350"
+        },
+        { "image": "fries", "name": "Loaded Fries", "desc": "Cheese, jalapeños, spicy sauce", "price": "950" }
+      ],
+      "link": { "label": "See full menu →", "href": "/menu" }
+    },
+    "story": {
+      "image": "chef",
+      "eyebrow": "Our story",
+      "title": "Obsessed with the crunch",
+      "text": "Marinated overnight, hand-breaded and fried to order — never under a heat lamp. Built for fast takeaway, with a few cosy seats if you can't wait.",
+      "link": { "label": "Read more →", "href": "/about" }
+    },
+    "gallery": {
+      "eyebrow": "Gallery",
+      "title": "Food, space & vibe",
+      "images": ["chicken", "interior", "burger", "chef", "fries", "hero"],
+      "alt": "Krispy gallery"
+    },
+    "reviews": {
+      "eyebrow": "Loved locally",
+      "title": "What people say",
+      "items": [
+        {
+          "name": "Nadeesha P.",
+          "text": "The crispiest chicken in Colombo. Ready in 10 minutes every time!"
+        },
+        { "name": "Ravi K.", "text": "Loaded fries are unreal. Our go-to Friday takeaway." },
+        { "name": "Amaya S.", "text": "Hot, fresh and perfectly packed. Love the burger." }
+      ],
+      "badges": [
+        { "icon": "award", "label": "Best Takeaway 2025" },
+        { "icon": "star", "label": "4.8 on Google" },
+        { "icon": "newspaper", "label": "Featured in Colombo Eats" }
+      ]
+    },
+    "visit": {
+      "eyebrow": "Visit us",
+      "title": "Come grab it hot"
+    }
+  },
+
+  "menu": {
+    "header": { "eyebrow": "Takeaway · Dine-in", "title": "Our Menu" },
+    "cta": "Call to order takeaway",
+    "sections": [
+      {
+        "section": "Crispy Chicken",
+        "items": [
+          { "name": "Krispy Bucket (8 pcs)", "desc": "Signature hand-breaded chicken", "price": "3,900" },
+          { "name": "Hot Wings (6 pcs)", "desc": "Tossed in fiery chilli glaze", "price": "1,450" },
+          { "name": "Tenders (5 pcs)", "desc": "Boneless strips with dip of choice", "price": "1,600" }
+        ]
+      },
+      {
+        "section": "Burgers & Wraps",
+        "items": [
+          { "name": "Krispy Classic Burger", "desc": "Crispy fillet, cheese, house sauce", "price": "1,350" },
+          { "name": "Zinger Wrap", "desc": "Spicy strips, slaw, garlic mayo", "price": "1,200" }
+        ]
+      },
+      {
+        "section": "Sides & Drinks",
+        "items": [
+          { "name": "Loaded Fries", "desc": "Cheese, jalapeños, spicy sauce", "price": "950" },
+          { "name": "Coleslaw", "desc": "Creamy and fresh", "price": "400" },
+          { "name": "Iced Lemonade", "desc": "Fresh-squeezed", "price": "450" }
+        ]
+      }
+    ]
+  },
+
+  "about": {
+    "header": { "eyebrow": "Our story", "title": "Born to be crispy" },
+    "image": "interior",
+    "paragraphs": [
+      "Krispy started with one obsession: the perfect crunch. Our chicken is marinated overnight, hand-breaded and fried fresh to order — never sitting under a lamp.",
+      "We're built for takeaway, so your food is packed hot and fast. Prefer to stay? Grab one of our seats and enjoy it right here."
+    ]
+  },
+
+  "contact": {
+    "header": { "eyebrow": "Find us", "title": "Visit Krispy" },
+    "callLabel": "Call to order",
+    "directionsLabel": "Get directions",
+    "directionsHref": "https://maps.app.goo.gl/VGjwHyEFy5gyRBUN8",
+    "mapTitle": "Krispy location map",
+    "mapSrc": "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3958.7456163518104!2d80.0654874!3d7.1553825!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fd0d8731f1cb%3A0x5b4a366d7a1cf1f!2sKrispi%20Foods!5e0!3m2!1sen!2slk!4v1792430106252!5m2!1sen!2slk"
+  },
+
+  "notFound": {
+    "eyebrow": "Error 404",
+    "heading": "Page missing from the menu",
+    "text": "Looks like this page got eaten or doesn't exist anymore. Head back home or order some fresh takeaway.",
+    "homeLabel": "Back to home",
+    "callLabel": "Call takeaway"
+  }
+}

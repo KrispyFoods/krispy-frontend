@@ -1,26 +1,72 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Theme Colors */
+  --background: #0a0a0a; /* Near-black background */
+  --foreground: #fafafa; /* High contrast heading text */
+  --card: #151515; /* Card container background */
+  --border: #2a2a2a; /* Subtle border color */
+  --muted-foreground: #a3a3a3; /* Secondary/body text */
+  --primary: #ea6608; /* Accent color (Krispy orange) */
+  --primary-foreground: #0a0a0a; /* Black text on top of orange */
+  --primary-deep: #e03a00; /* Deep red-orange end of the "fire" gradient */
 }
 
+/* Expose the variables as Tailwind utilities (bg-background, text-primary, border-border, ...) */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  /* next/font injects these variables on <html> in layout.tsx */
+  --font-sans: var(--font-manrope), system-ui, sans-serif;
+  --font-display: var(--font-cormorant), Georgia, serif;
+
+  --shadow-glow: 0 0 40px -8px color-mix(in srgb, var(--primary) 60%, transparent);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  /* Accent gradient used for CTA backgrounds and highlighted words */
+  .bg-fire {
+    background-image: linear-gradient(100deg, var(--primary), var(--primary-deep));
+  }
+
+  .text-fire {
+    background-image: linear-gradient(100deg, var(--primary), var(--primary-deep));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Darkens the hero photo so text stays readable */
+  .bg-fade {
+    background-image: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--background) 70%, transparent),
+      color-mix(in srgb, var(--background) 40%, transparent) 50%,
+      var(--background)
+    );
+  }
 }
