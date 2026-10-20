@@ -11,7 +11,7 @@ const variants: Record<Variant, string> = {
   outline: 'border border-border transition-colors hover:border-primary hover:text-primary',
 };
 
-interface ButtonLinkProps {
+interface ButtonProps {
   href: string;
   variant?: Variant;
   size?: keyof typeof sizes;
@@ -21,14 +21,14 @@ interface ButtonLinkProps {
 }
 
 /** A link styled as a button. Site paths use next/link; tel:, mailto: and http(s) links use a plain <a>. */
-export function ButtonLink({
+export function Button({
   href,
   variant = 'primary',
   size = 'md',
   className,
   onClick,
   children,
-}: ButtonLinkProps) {
+}: ButtonProps) {
   const classes = cn(base, sizes[size], variants[variant], className);
 
   if (href.startsWith('/')) {

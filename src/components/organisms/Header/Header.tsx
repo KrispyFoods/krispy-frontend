@@ -3,7 +3,7 @@
 import { Menu as MenuIcon, X } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import { ButtonLink, Logo } from '@/components/atoms';
+import { Button, Logo } from '@/components/atoms';
 import { NavLink } from '@/components/molecules';
 import type { Nav } from '@/lib/db';
 
@@ -19,9 +19,9 @@ export function Header({ name, nav }: { name: string; nav: Nav }) {
           {nav.links.map((n) => (
             <NavLink key={n.href} href={n.href} label={n.label} active={pathname === n.href} />
           ))}
-          <ButtonLink href={nav.cta.href} size="sm">
+          <Button href={nav.cta.href} size="sm">
             {nav.cta.label}
-          </ButtonLink>
+          </Button>
         </nav>
         <button
           aria-label="Toggle menu"
@@ -44,9 +44,9 @@ export function Header({ name, nav }: { name: string; nav: Nav }) {
               onClick={() => setOpen(false)}
             />
           ))}
-          <ButtonLink href={nav.cta.href} className="text-center" onClick={() => setOpen(false)}>
+          <Button href={nav.cta.href} className="text-center" onClick={() => setOpen(false)}>
             {nav.cta.label}
-          </ButtonLink>
+          </Button>
         </nav>
       )}
     </header>

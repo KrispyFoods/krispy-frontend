@@ -1,0 +1,1 @@
+export { DishesSection } from './DishesSection';

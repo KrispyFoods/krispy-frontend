@@ -1,4 +1,4 @@
-import { ButtonLink } from '@/components/atoms';
+import { Button } from '@/components/atoms';
 import { InfoBlock } from '@/components/molecules';
 import type { Contact, Site } from '@/lib/db';
 
@@ -25,10 +25,10 @@ export function VisitUs({ site, contact }: { site: Site; contact: Contact }) {
           <p>{site.email}</p>
         </InfoBlock>
         <div className="flex flex-wrap gap-3 pt-2">
-          <ButtonLink href={site.phone.href}>{contact.callLabel}</ButtonLink>
-          <ButtonLink href={contact.directionsHref} variant="outline">
+          <Button href={site.phone.href}>{contact.callLabel}</Button>
+          <Button href={contact.directionsHref} variant="outline">
             {contact.directionsLabel}
-          </ButtonLink>
+          </Button>
         </div>
       </div>
       <iframe

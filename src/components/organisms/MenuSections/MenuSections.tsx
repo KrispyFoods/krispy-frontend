@@ -1,4 +1,4 @@
-import { ButtonLink } from '@/components/atoms';
+import { Button } from '@/components/atoms';
 import { MenuItem } from '@/components/molecules';
 import type { Menu } from '@/lib/db';
 
@@ -16,9 +16,9 @@ export function MenuSections({ menu, phoneHref }: { menu: Menu; phoneHref: strin
         </section>
       ))}
       <div className="text-center">
-        <ButtonLink href={phoneHref} className="inline-block">
+        <Button href={phoneHref} className="inline-block">
           {menu.cta}
-        </ButtonLink>
+        </Button>
       </div>
     </div>
   );

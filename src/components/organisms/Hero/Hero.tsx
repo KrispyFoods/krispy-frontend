@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { ButtonLink, Eyebrow } from '@/components/atoms';
+import { Button, Eyebrow } from '@/components/atoms';
 import type { Home } from '@/lib/db';
 
 export function Hero({ hero, phoneHref }: { hero: Home['hero']; phoneHref: string }) {
@@ -21,10 +21,10 @@ export function Hero({ hero, phoneHref }: { hero: Home['hero']; phoneHref: strin
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">{hero.subtitle}</p>
         <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-          <ButtonLink href={phoneHref}>{hero.primaryCtaLabel}</ButtonLink>
-          <ButtonLink href={hero.secondaryCta.href} variant="outline">
+          <Button href={phoneHref}>{hero.primaryCtaLabel}</Button>
+          <Button href={hero.secondaryCta.href} variant="outline">
             {hero.secondaryCta.label}
-          </ButtonLink>
+          </Button>
         </div>
       </div>
     </section>

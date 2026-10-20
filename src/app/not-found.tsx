@@ -1,4 +1,4 @@
-import { ButtonLink } from '@/components/atoms';
+import { Button } from '@/components/atoms';
 import { getNotFound, getSite } from '@/lib/db';
 
 export default async function NotFound() {
@@ -16,10 +16,10 @@ export default async function NotFound() {
         </h2>
         <p className="mt-3 text-muted-foreground">{content.text}</p>
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-          <ButtonLink href="/">{content.homeLabel}</ButtonLink>
-          <ButtonLink href={site.phone.href} variant="outline">
+          <Button href="/">{content.homeLabel}</Button>
+          <Button href={site.phone.href} variant="outline">
             {content.callLabel}
-          </ButtonLink>
+          </Button>
         </div>
       </div>
     </section>

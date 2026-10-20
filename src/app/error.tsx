@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { ButtonLink } from '@/components/atoms';
+import { Button } from '@/components/atoms';
 
 // Error boundaries are client components and can't await db.json, so this copy lives here.
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
@@ -27,9 +27,9 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
           >
             Try again
           </button>
-          <ButtonLink href="/" variant="outline">
+          <Button href="/" variant="outline">
             Go home
-          </ButtonLink>
+          </Button>
         </div>
       </div>
     </section>
