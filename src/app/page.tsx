@@ -1,4 +1,3 @@
-import { SectionTitle } from '@/components/molecules';
 import {
   DishesSection,
   GallerySection,
@@ -6,8 +5,9 @@ import {
   OffersSection,
   ReviewsSection,
   StorySection,
+  SectionTitle,
   VisitUs,
-} from '@/components/organisms';
+} from '@/components';
 import { getContact, getHome, getSite } from '@/lib/db';
 import { pageMetadata } from '@/lib/metadata';
 

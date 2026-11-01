@@ -7,14 +7,14 @@ import { Button, Logo } from '@/components/atoms';
 import { NavLink } from '@/components/molecules';
 import type { Nav } from '@/lib/db';
 
-export function Header({ name, nav }: { name: string; nav: Nav }) {
+export function Header({ nav }: { nav: Nav }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Logo name={name} />
+        <Logo />
         <nav className="hidden items-center gap-6 text-sm uppercase tracking-widest md:flex">
           {nav.links.map((n) => (
             <NavLink key={n.href} href={n.href} label={n.label} active={pathname === n.href} />
