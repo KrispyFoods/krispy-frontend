@@ -7,9 +7,10 @@ export function Logo() {
       <Image
         src="/images/Krispi Logo.png"
         alt="Krispi Logo"
-        width={100}
-        height={100}
-        className="inline-block "
+        width={1628}
+        height={621}
+        priority
+        className="inline-block h-12 w-auto"
       />
     </Link>
   );

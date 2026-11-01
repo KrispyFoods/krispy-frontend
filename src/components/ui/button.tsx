@@ -17,6 +17,10 @@ const buttonVariants = cva(
         destructive:
           'bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40',
         link: 'text-primary underline-offset-4 hover:underline',
+        // Public-site call-to-action looks: square, uppercase, orange gradient / outlined.
+        fire: 'rounded-none bg-fire font-semibold tracking-widest text-primary-foreground uppercase shadow-glow hover:scale-105',
+        'fire-outline':
+          'rounded-none border-border font-semibold tracking-widest uppercase hover:border-primary hover:text-primary',
       },
       size: {
         default: 'h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2',
@@ -28,6 +32,8 @@ const buttonVariants = cva(
           "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",
         'icon-sm': 'size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg',
         'icon-lg': 'size-9',
+        cta: 'h-auto px-8 py-3',
+        'cta-sm': 'h-auto px-5 py-2',
       },
     },
     defaultVariants: {

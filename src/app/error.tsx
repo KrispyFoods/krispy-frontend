@@ -1,7 +1,17 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect } from 'react';
-import { Button } from '@/components/atoms';
+import { Eyebrow } from '@/components/atoms';
+import {
+  Button,
+  buttonVariants,
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from '@/components/ui';
 
 // Error boundaries are client components and can't await db.json, so this copy lives here.
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
@@ -10,28 +20,25 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
   }, [error]);
 
   return (
-    <section className="flex min-h-[80vh] items-center justify-center px-6 pt-24 text-center">
-      <div className="max-w-md">
-        <p className="text-xs uppercase tracking-[0.4em] text-primary">Something went wrong</p>
-        <h1 className="mt-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl">
+    <Empty className="min-h-[80vh] px-6 pt-24">
+      <EmptyHeader className="max-w-md">
+        <Eyebrow className="tracking-[0.4em]">Something went wrong</Eyebrow>
+        <EmptyTitle className="font-display text-4xl font-bold tracking-tight text-foreground md:text-5xl">
           Kitchen trouble!
-        </h1>
-        <p className="mt-3 text-muted-foreground">
+        </EmptyTitle>
+        <EmptyDescription>
           We couldn&apos;t load this page right now. You can try refreshing the page or head back to the main
           menu.
-        </p>
-        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-          <button
-            onClick={() => reset()}
-            className="bg-fire px-8 py-3 text-sm font-semibold uppercase tracking-widest text-primary-foreground shadow-glow transition-transform hover:scale-105"
-          >
-            Try again
-          </button>
-          <Button href="/" variant="outline">
-            Go home
-          </Button>
-        </div>
-      </div>
-    </section>
+        </EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent className="flex-col sm:flex-row sm:justify-center">
+        <Button variant="fire" size="cta" onClick={() => reset()}>
+          Try again
+        </Button>
+        <Link href="/" className={buttonVariants({ variant: 'fire-outline', size: 'cta' })}>
+          Go home
+        </Link>
+      </EmptyContent>
+    </Empty>
   );
 }

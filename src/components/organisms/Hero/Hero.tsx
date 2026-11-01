@@ -1,5 +1,7 @@
 import Image from 'next/image';
-import { Button, Eyebrow } from '@/components/atoms';
+import Link from 'next/link';
+import { Eyebrow } from '@/components/atoms';
+import { buttonVariants } from '@/components/ui';
 import type { Home } from '@/lib/db';
 
 export function Hero({ hero, phoneHref }: { hero: Home['hero']; phoneHref: string }) {
@@ -21,10 +23,15 @@ export function Hero({ hero, phoneHref }: { hero: Home['hero']; phoneHref: strin
         </h1>
         <p className="mx-auto mt-6 max-w-xl text-lg text-muted-foreground">{hero.subtitle}</p>
         <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-          <Button href={phoneHref}>{hero.primaryCtaLabel}</Button>
-          <Button href={hero.secondaryCta.href} variant="outline">
+          <Link href={phoneHref} className={buttonVariants({ variant: 'fire', size: 'cta' })}>
+            {hero.primaryCtaLabel}
+          </Link>
+          <Link
+            href={hero.secondaryCta.href}
+            className={buttonVariants({ variant: 'fire-outline', size: 'cta' })}
+          >
             {hero.secondaryCta.label}
-          </Button>
+          </Link>
         </div>
       </div>
     </section>

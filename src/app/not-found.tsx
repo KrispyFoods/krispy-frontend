@@ -1,27 +1,36 @@
-import { Button } from '@/components/atoms';
+import Link from 'next/link';
+import { Eyebrow } from '@/components/atoms';
+import {
+  buttonVariants,
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from '@/components/ui';
 import { getNotFound, getSite } from '@/lib/db';
 
 export default async function NotFound() {
   const [content, site] = await Promise.all([getNotFound(), getSite()]);
 
   return (
-    <section className="flex min-h-[80vh] items-center justify-center px-6 pt-24 text-center">
-      <div className="max-w-md">
-        <p className="text-xs uppercase tracking-[0.4em] text-primary">{content.eyebrow}</p>
-        <h1 className="mt-4 text-7xl font-bold tracking-tight text-foreground md:text-9xl">
+    <Empty className="min-h-[80vh] px-6 pt-24">
+      <EmptyHeader className="max-w-md">
+        <Eyebrow className="tracking-[0.4em]">{content.eyebrow}</Eyebrow>
+        <EmptyTitle className="font-display text-7xl font-bold tracking-tight text-foreground md:text-9xl">
           4<span className="text-fire italic">0</span>4
-        </h1>
-        <h2 className="mt-4 text-2xl font-semibold uppercase tracking-wider text-foreground">
-          {content.heading}
-        </h2>
-        <p className="mt-3 text-muted-foreground">{content.text}</p>
-        <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-          <Button href="/">{content.homeLabel}</Button>
-          <Button href={site.phone.href} variant="outline">
-            {content.callLabel}
-          </Button>
-        </div>
-      </div>
-    </section>
+        </EmptyTitle>
+        <h2 className="text-2xl font-semibold uppercase tracking-wider text-foreground">{content.heading}</h2>
+        <EmptyDescription>{content.text}</EmptyDescription>
+      </EmptyHeader>
+      <EmptyContent className="flex-col sm:flex-row sm:justify-center">
+        <Link href="/" className={buttonVariants({ variant: 'fire', size: 'cta' })}>
+          {content.homeLabel}
+        </Link>
+        <Link href={site.phone.href} className={buttonVariants({ variant: 'fire-outline', size: 'cta' })}>
+          {content.callLabel}
+        </Link>
+      </EmptyContent>
+    </Empty>
   );
 }

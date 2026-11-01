@@ -1,4 +1,5 @@
 import { Award, Newspaper, Star } from 'lucide-react';
+import { Badge } from '@/components/ui';
 import type { TrustBadgeData } from '@/lib/db';
 
 const icons = { award: Award, star: Star, newspaper: Newspaper } as const;
@@ -6,9 +7,12 @@ const icons = { award: Award, star: Star, newspaper: Newspaper } as const;
 export function TrustBadge({ icon, label }: TrustBadgeData) {
   const Icon = icons[icon];
   return (
-    <span className="flex items-center gap-2">
-      <Icon className="h-5 w-5 text-primary" />
+    <Badge
+      variant="outline"
+      className="h-auto gap-2 rounded-none border-none bg-transparent p-0 text-sm tracking-widest text-muted-foreground uppercase"
+    >
+      <Icon className="size-5 text-primary" />
       {label}
-    </span>
+    </Badge>
   );
 }

@@ -3,6 +3,9 @@ import { DishCard, SectionTitle } from '@/components/molecules';
 import type { Home } from '@/lib/db';
 
 export function DishesSection({ dishes }: { dishes: Home['dishes'] }) {
+  // Nothing is featured yet: skip the section instead of showing an empty heading.
+  if (dishes.items.length === 0) return null;
+
   return (
     <section className="mx-auto max-w-6xl px-6 pb-20">
       <SectionTitle eyebrow={dishes.eyebrow} title={dishes.title} />
