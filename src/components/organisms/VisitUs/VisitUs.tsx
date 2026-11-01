@@ -1,5 +1,6 @@
-import { Button } from '@/components/atoms';
+import Link from 'next/link';
 import { InfoBlock } from '@/components/molecules';
+import { buttonVariants } from '@/components/ui';
 import type { Contact, Site } from '@/lib/db';
 
 export function VisitUs({ site, contact }: { site: Site; contact: Contact }) {
@@ -25,10 +26,17 @@ export function VisitUs({ site, contact }: { site: Site; contact: Contact }) {
           <p>{site.email}</p>
         </InfoBlock>
         <div className="flex flex-wrap gap-3 pt-2">
-          <Button href={site.phone.href}>{contact.callLabel}</Button>
-          <Button href={contact.directionsHref} variant="outline">
+          <Link href={site.phone.href} className={buttonVariants({ variant: 'fire', size: 'cta' })}>
+            {contact.callLabel}
+          </Link>
+          <a
+            href={contact.directionsHref}
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants({ variant: 'fire-outline', size: 'cta' })}
+          >
             {contact.directionsLabel}
-          </Button>
+          </a>
         </div>
       </div>
       <iframe

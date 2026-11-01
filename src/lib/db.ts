@@ -1,10 +1,16 @@
 import raw from '@/data/db.json';
+import { getFeaturedDishes, getMenuSections } from '@/lib/menu-data';
+import type { FeaturedDish, MenuSectionData } from '@/lib/menu-types';
 
 /**
- * The site's "database". All content lives in src/data/db.json and is read ONLY through
- * the getters below, so swapping the JSON for a real database/API later means changing
- * this file and nothing else. Getters are async for the same reason.
+ * Where the public pages get their content, read ONLY through the getters below:
+ * - static copy (headings, labels, hero, story, contact, SEO text) comes from src/data/db.json;
+ * - the menu and the signature dishes come from MongoDB (src/lib/menu-data.ts), so what the admin
+ *   saves shows up on the site straight away.
+ * Getters are async because part of the content is a database read.
  */
+
+export type { MenuItemData } from '@/lib/menu-types';
 
 export interface ImageData {
   src: string;
@@ -47,12 +53,7 @@ export interface Offer {
   tag: string;
 }
 
-export interface Dish {
-  image: ImageData;
-  name: string;
-  desc: string;
-  price: string;
-}
+export type Dish = FeaturedDish;
 
 export interface Review {
   name: string;
@@ -87,16 +88,12 @@ export interface Home {
   visit: { eyebrow: string; title: string };
 }
 
-export interface MenuItemData {
-  name: string;
-  desc: string;
-  price: string;
-}
-
 export interface Menu {
   header: { eyebrow: string; title: string };
   cta: string;
-  sections: { section: string; items: MenuItemData[] }[];
+  /** Shown when the database has no available dishes yet. */
+  empty: string;
+  sections: MenuSectionData[];
 }
 
 export interface About {
@@ -148,7 +145,7 @@ export async function getHome(): Promise<Home> {
   return {
     hero: { ...hero, image: img(hero.image) },
     offers,
-    dishes: { ...dishes, items: dishes.items.map((d) => ({ ...d, image: img(d.image) })) },
+    dishes: { ...dishes, items: await getFeaturedDishes() },
     story: { ...story, image: img(story.image) },
     gallery: { ...gallery, images: gallery.images.map(img) },
     reviews: reviews as Home['reviews'],
@@ -157,7 +154,7 @@ export async function getHome(): Promise<Home> {
 }
 
 export async function getMenu(): Promise<Menu> {
-  return raw.menu;
+  return { ...raw.menu, sections: await getMenuSections() };
 }
 
 export async function getAbout(): Promise<About> {

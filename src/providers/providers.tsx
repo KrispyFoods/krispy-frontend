@@ -3,6 +3,7 @@
 
 import { QueryClient, QueryClientProvider, environmentManager } from '@tanstack/react-query';
 import type { ReactNode } from 'react';
+import { Toaster } from '@/components/ui';
 
 function makeQueryClient() {
   return new QueryClient({
@@ -33,5 +34,10 @@ export function Providers({ children }: { children: ReactNode }) {
   // have a suspense boundary between this and the code that may suspend
   const queryClient = getQueryClient();
 
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
+  return (
+    <QueryClientProvider client={queryClient}>
+      {children}
+      <Toaster theme="dark" position="bottom-right" />
+    </QueryClientProvider>
+  );
 }
