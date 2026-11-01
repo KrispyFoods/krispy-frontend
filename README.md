@@ -16,7 +16,7 @@ Website for Krispi, a crispy-chicken takeaway in Veyangoda, Sri Lanka: a public 
 
 ```bash
 npm install
-cp .env.example .env   # then fill in the values below
+# create a .env file with the variables below
 npm run dev            # http://localhost:3000
 ```
 
@@ -30,7 +30,7 @@ npm run dev            # http://localhost:3000
 | `ADMIN_PIN` | The 6-digit PIN for `/admin`. Leave it empty and nobody can sign in. |
 | `AUTH_SECRET` | Random secret (32+ characters) that signs the session cookie. Changing it signs everyone out. |
 
-`.env` is gitignored; `.env.example` lists the names only.
+`.env` is gitignored, so each developer creates their own.
 
 ## Scripts
 
