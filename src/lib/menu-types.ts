@@ -25,7 +25,14 @@ export interface DishDTO {
 
 /** What every server action returns: never throws for expected failures. */
 export type ActionResult<T> =
-  { ok: true; data: T } | { ok: false; error: string; fieldErrors?: Record<string, string> };
+  | { ok: true; data: T }
+  | {
+      ok: false;
+      error: string;
+      fieldErrors?: Record<string, string>;
+      /** 'unauthorized': the admin session is missing, expired or signed out. */
+      code?: 'unauthorized';
+    };
 
 export interface UploadedImage {
   url: string;

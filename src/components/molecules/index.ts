@@ -11,5 +11,6 @@ export { ImageUploadField } from './ImageUploadField';
 export { ConfirmDelete } from './ConfirmDelete';
 export { RowActions } from './RowActions';
 export { FormCard } from './FormCard';
+export { LogoutButton } from './LogoutButton';
 export { TableCard } from './TableCard';
 export type { TableColumn } from './TableCard';

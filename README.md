@@ -2,7 +2,7 @@
 
 Website for Krispi, a crispy-chicken takeaway in Veyangoda, Sri Lanka: a public site (home, menu, about, contact) and an admin page to manage the menu.
 
-> **`/admin` has no login yet.** Anyone who knows the URL can add, edit and delete dishes and upload photos. Add authentication before deploying.
+`/admin` is protected by a 6-digit PIN (see [Admin sign-in](#admin-sign-in)).
 
 ## Stack
 
@@ -26,6 +26,9 @@ npm run dev            # http://localhost:3000
 | ---------------- | ---------------------------------------------------------------------------------------------------- |
 | `MONGODB_URI`    | MongoDB connection string.                                                                           |
 | `CLOUDINARY_URL` | `cloudinary://<api_key>:<api_secret>@<cloud_name>`. The key needs upload (create) and delete access. |
+
+| `ADMIN_PIN` | The 6-digit PIN for `/admin`. Leave it empty and nobody can sign in. |
+| `AUTH_SECRET` | Random secret (32+ characters) that signs the session cookie. Changing it signs everyone out. |
 
 `.env` is gitignored; `.env.example` lists the names only.
 
@@ -59,6 +62,14 @@ src/
 ```
 
 Each component lives in its own folder (`Name/Name.tsx` + `index.ts`) and is imported from its level barrel, e.g. `import { Hero } from '@/components/organisms'`.
+
+## Admin sign-in
+
+- `/admin/login` takes the PIN. A correct PIN sets a signed (JWT) **httpOnly** cookie that lasts 8 hours; script in the page can't read it.
+- 5 wrong PINs from one IP lock sign-in for 15 minutes (`LoginAttempt`, cleaned up by a TTL index).
+- Every request is checked in three layers: `src/proxy.ts` (cookie signature and expiry, no database), the admin page and every write Server Action (`verifySession` / `requireAdmin`, which also check the blocklist).
+- **Sign out** deletes the cookie and puts the token's id on a blocklist (`RevokedToken`) until it would have expired anyway, so a copied cookie stops working too. A TTL index removes old entries.
+- To sign everyone out at once, change `AUTH_SECRET`.
 
 ## How content flows
 

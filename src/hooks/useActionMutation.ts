@@ -1,10 +1,12 @@
 'use client';
 
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import type { ActionResult } from '@/lib/menu-types';
 
 const GENERIC_ERROR = 'Something went wrong. Try again.';
+const LOGIN_PATH = '/admin/login';
 
 /** What a form passes to a create/update hook so it can react to the result. */
 export interface SaveOptions<TData> {
@@ -32,11 +34,15 @@ export function useActionMutation<TVars, TData>({
   onSuccess,
   onFieldErrors,
 }: ActionMutationOptions<TVars, TData>) {
+  const router = useRouter();
+
   return useMutation({
     mutationFn: action,
     onSuccess: (result, vars) => {
       if (!result.ok) {
-        onFieldErrors?.(result.fieldErrors ?? {});
+        // The admin session ended (signed out elsewhere or expired): go sign in again.
+        if (result.code === 'unauthorized') router.replace(LOGIN_PATH);
+        else onFieldErrors?.(result.fieldErrors ?? {});
         toast.error(result.error);
         return;
       }

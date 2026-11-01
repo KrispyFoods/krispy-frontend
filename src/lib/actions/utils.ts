@@ -1,5 +1,6 @@
 import { isValidObjectId } from 'mongoose';
 import type { ZodType, infer as Infer } from 'zod';
+import { verifySession } from '@/lib/auth/session';
 import type { ActionResult } from '@/lib/menu-types';
 import connectDB from '@/lib/mongodb';
 import { toFieldErrors } from '@/lib/schemas';
@@ -10,6 +11,16 @@ export const ok = <T>(data: T): ActionResult<T> => ({ ok: true, data });
 
 export function fail(error: string, fieldErrors?: Record<string, string>): ActionResult<never> {
   return { ok: false, error, ...(fieldErrors ? { fieldErrors } : {}) };
+}
+
+/**
+ * Guard for every action that changes admin data: returns a result to hand straight back when
+ * the caller is not signed in, otherwise null. Server Actions are public endpoints, so hiding
+ * the admin page is not enough.
+ */
+export async function requireAdmin(): Promise<ActionResult<never> | null> {
+  if (await verifySession()) return null;
+  return { ok: false, error: 'Your session ended. Sign in again.', code: 'unauthorized' };
 }
 
 export function logError(label: string, error: unknown) {

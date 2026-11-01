@@ -2,11 +2,13 @@
 
 import { updateTag } from 'next/cache';
 import { NOT_FOUND } from '@/lib/actions/category/shared';
-import { fail, invalidId, ok, withDb } from '@/lib/actions/utils';
+import { fail, invalidId, ok, requireAdmin, withDb } from '@/lib/actions/utils';
 import type { ActionResult } from '@/lib/menu-types';
 import { Category, Dish } from '@/models';
 
 export async function deleteCategory(id: string): Promise<ActionResult<null>> {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   const bad = invalidId(id, NOT_FOUND);
   if (bad) return bad;
 

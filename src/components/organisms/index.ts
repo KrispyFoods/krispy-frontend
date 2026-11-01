@@ -8,6 +8,7 @@ export { GallerySection } from './GallerySection';
 export { ReviewsSection } from './ReviewsSection';
 export { VisitUs } from './VisitUs';
 export { MenuSections } from './MenuSections';
+export { LoginForm } from './LoginForm';
 export { CategoryManager } from './CategoryManager';
 export { CategoryForm } from './CategoryForm';
 export { CategoryTable } from './CategoryTable';

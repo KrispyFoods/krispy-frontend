@@ -26,6 +26,7 @@ export {
   FieldTitle,
 } from './field';
 export { Input } from './input';
+export { InputOTP, InputOTPGroup, InputOTPSlot } from './input-otp';
 export {
   Item,
   ItemActions,

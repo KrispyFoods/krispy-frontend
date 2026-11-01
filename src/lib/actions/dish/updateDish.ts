@@ -2,13 +2,15 @@
 
 import { updateTag } from 'next/cache';
 import { checkDish, cleanUpImage, DUPLICATE, NOT_FOUND } from '@/lib/actions/dish/shared';
-import { fail, invalidId, ok, withDb } from '@/lib/actions/utils';
+import { fail, invalidId, ok, requireAdmin, withDb } from '@/lib/actions/utils';
 import { imageUrl } from '@/lib/cloudinary';
 import { toDishDTO } from '@/lib/menu-mappers';
 import type { ActionResult, DishDTO } from '@/lib/menu-types';
 import { Dish } from '@/models';
 
 export async function updateDish(id: string, input: unknown): Promise<ActionResult<DishDTO>> {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   const bad = invalidId(id, NOT_FOUND);
   if (bad) return bad;
 

@@ -1,12 +1,15 @@
 'use server';
 
-import { fail, logError, ok } from '@/lib/actions/utils';
+import { fail, logError, ok, requireAdmin } from '@/lib/actions/utils';
 import { uploadBuffer } from '@/lib/cloudinary';
 import { CLOUDINARY_FOLDER, MAX_UPLOAD_BYTES } from '@/lib/image-constants';
 import { sniffImageType } from '@/lib/image-sniff';
 import type { ActionResult, UploadedImage } from '@/lib/menu-types';
 
 export async function uploadImage(formData: FormData): Promise<ActionResult<UploadedImage>> {
+  const denied = await requireAdmin();
+  if (denied) return denied;
+
   const file = formData.get('file');
   if (!(file instanceof File) || file.size === 0) return fail('Choose an image to upload.');
   if (file.size > MAX_UPLOAD_BYTES) return fail('Image must be 4 MB or smaller.');

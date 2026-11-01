@@ -2,12 +2,14 @@
 
 import { updateTag } from 'next/cache';
 import { DUPLICATE, parseCategory } from '@/lib/actions/category/shared';
-import { ok, withDb } from '@/lib/actions/utils';
+import { ok, requireAdmin, withDb } from '@/lib/actions/utils';
 import { toCategoryDTO } from '@/lib/menu-mappers';
 import type { ActionResult, CategoryDTO } from '@/lib/menu-types';
 import { Category } from '@/models';
 
 export async function createCategory(input: unknown): Promise<ActionResult<CategoryDTO>> {
+  const denied = await requireAdmin();
+  if (denied) return denied;
   const parsed = parseCategory(input);
   if (!parsed.ok) return parsed.result;
 

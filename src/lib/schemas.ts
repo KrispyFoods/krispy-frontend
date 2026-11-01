@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { PIN_LENGTH } from '@/lib/auth/constants';
 import { PUBLIC_ID_PATTERN } from '@/lib/image-constants';
 
 /**
@@ -23,6 +24,10 @@ export const dishSchema = z.object({
   imagePublicId: z.string().regex(PUBLIC_ID_PATTERN, 'Upload the photo again.').optional(),
   isAvailable: z.boolean(),
   isFeatured: z.boolean(),
+});
+
+export const pinSchema = z.object({
+  pin: z.string().regex(new RegExp(`^\\d{${PIN_LENGTH}}$`), `Enter all ${PIN_LENGTH} digits.`),
 });
 
 export type CategoryInput = z.infer<typeof categorySchema>;
